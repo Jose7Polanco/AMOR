@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .heart {
+            font-size: 50px;
+            animation: latido 1s infinite;
+        }
+
+        @keyframes latido {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff6f91;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #ff3e6c;
+        }
+
+        .hidden {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Feliz 2 Meses Mi Amor 💕</h1>
+        <h2>Gracias por hacer mi vida más bonita</h2>
+
+        <div class="card">
+            <p>
+                Hoy celebramos dos meses juntos y aunque parezca poco tiempo para mí ha sido suficiente para darme
+                cuenta de lo increíble que eres mi niña, gracias por cada sonrisa, cada momento y por hacerme tan feliz
+                con tan solo estar en mi vida, quiero pasar mucho tiempo más contigo mi amor y seguir creando recuerdos
+                juntos. 
+                💖
+            </p>
+            <p>
+                Te amo muchísimo ❤️, y espero que estos dos meses solo sean el comienzo de algo que nunca
+                termine 🥺
+            </p>
+        </div>
+
+        <div class="heart">❤️</div>
+
+        <button onclick="mostrarMensaje()">Haz clic aquí 💌</button>
+
+        <div id="mensaje" class="hidden">
+            <p>
+                Te amo muchísimo ❤️
+                y espero que estos 2 meses sean solo el comienzo de algo eterno.
+            </p>
+        </div>
+    </div>
+    <script>
+        function mostrarMensaje() {
+            document.getElementById('mensaje').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

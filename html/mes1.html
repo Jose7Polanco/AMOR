@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestro Primer Mes ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: white;
+            text-align: center;
+        }
+
+        .contenedor {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+        .carta {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .corazon {
+            font-size: 40px;
+            animation: latido 1s infinite;
+        }
+
+        @keyframes latido {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff4b5c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff1e3c;
+        }
+
+        .mensaje {
+            margin-top: 20px;
+            font-size: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <h1>❤️ Nuestro Primer Mes ❤️</h1>
+        <h2>Para la persona más especial de mi vida</h2>
+
+        <div class="carta">
+            <p>
+                Amor, hoy cumplimos nuestro primer mes juntos y quiero decirte
+                lo feliz que me haces. Cada momento a tu lado es especial,
+                cada sonrisa tuya ilumina mi día, y cada abrazo tuyo es mi lugar favorito.
+            </p>
+
+            <p>
+                Gracias por existir, por llegar a mi vida y hacerla tan bonita.
+                Esto es solo el comienzo de algo increíble. 💕
+            </p>
+
+            <p class="corazon">❤️</p>
+        </div>
+
+        <button onclick="mostrarMensaje()">Haz clic aquí</button>
+
+        <div class="mensaje" id="mensaje">
+            Te amo muchísimo 💖 Nunca lo olvides
+        </div>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById("mensaje").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
