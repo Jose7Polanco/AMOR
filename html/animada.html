@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Para mi amor · Lo más bonito de mi vida ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #ffb7c5 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        /* Partículas flotantes (corazones y estrellas) */
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            font-size: 1.5rem;
+            animation: floatUp 8s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5) rotate(0deg);
+            }
+            15% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.9;
+                transform: translateY(-50vh) scale(1) rotate(15deg);
+            }
+            85% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) scale(0.8) rotate(30deg);
+            }
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 20;
+        }
+
+        /* Tarjeta principal */
+        .love-card {
+            background: rgba(255, 248, 250, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Título principal */
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #c9184a, #ff6b8b, #ffb347);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Subtítulo */
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a13e5c;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Animación de máquina de escribir */
+        .typewriter-container {
+            background: rgba(255, 235, 240, 0.7);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typewriter-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #5a2e3e;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            margin-left: 4px;
+            background-color: #ff6b8b;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Botón mágico */
+        .magic-btn {
+            background: linear-gradient(135deg, #ff6b8b, #c9184a);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(201, 24, 74, 0.4);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .magic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 28px rgba(201, 24, 74, 0.5);
+        }
+
+        /* Mensaje secreto */
+        .secret-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-out;
+            background: linear-gradient(135deg, #fff0f3, #ffe4e9);
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .secret-message.show {
+            max-height: 400px;
+            transition: max-height 0.8s ease-in;
+        }
+
+        .secret-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .secret-content p {
+            font-size: 1.1rem;
+            color: #8b3c54;
+            margin: 0.5rem 0;
+        }
+
+        .flower-rain {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            animation: bounce 1s ease infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Galería de fotos */
+        .gallery {
+            margin: 2rem 0;
+        }
+
+        .gallery h3 {
+            font-size: 1.5rem;
+            color: #c9184a;
+            margin-bottom: 1rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-caption {
+            padding: 0.8rem;
+            font-size: 0.85rem;
+            color: #a55d78;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Contador de tiempo juntos */
+        .time-together {
+            background: rgba(255, 220, 230, 0.6);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .time-together p {
+            font-size: 1rem;
+            color: #8b3c54;
+        }
+
+        .time-numbers {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c9184a, #ff6b8b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        /* Pie de página */
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 2.3rem;
+            }
+            .love-card {
+                padding: 1.5rem;
+            }
+            .typewriter-text {
+                font-size: 1rem;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        /* Corazón latiente decorativo */
+        .floating-heart-bg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 3rem;
+            animation: latido 1s infinite;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Fondo flotante de corazón -->
+    <div class="floating-heart-bg">❤️</div>
+
+    <div class="main-container">
+        <div class="love-card">
+            <h1 class="main-title">
+                ✨ Para mi amor eterno ✨
+            </h1>
+            <p class="subtitle">
+                Cada día contigo es un regalo del cielo
+            </p>
+
+            <!-- Animación de máquina de escribir -->
+            <div class="typewriter-container">
+                <div class="typewriter-text" id="typewriter"></div>
+            </div>
+
+            <!-- Botón mágico -->
+            <button class="magic-btn" id="magicBtn">💖 Toca aquí 💖</button>
+
+            <!-- Mensaje secreto que se despliega -->
+            <div class="secret-message" id="secretMessage">
+                <div class="secret-content">
+                    <div class="flower-rain">🌸🌼🌻🌺🌹</div>
+                    <p><strong>💌 Para ti, mi niña bonita 💌</strong></p>
+                    <p>Eres la luz que ilumina mis días,</p>
+                    <p>la razón de mis sonrisas y el latido de mi corazón.</p>
+                    <p>No hay palabras suficientes para decirte cuánto te amo,</p>
+                    <p>pero quiero que sepas que cada segundo a tu lado es eterno.</p>
+                    <p style="font-size: 1.3rem; margin-top: 1rem;">❤️ TE AMO CON TODA MI ALMA ❤️</p>
+                    <div class="flower-rain">🌹💕🌷💖🌸</div>
+                </div>
+            </div>
+
+            <!-- Galería de fotos (placeholders, pon tus imágenes reales) -->
+            <div class="gallery">
+                <h3>📸 MI MUJER HERMOSA </h3>
+                <div class="photo-grid" id="photoGrid">
+                    <!-- Estas imágenes son ilustrativas. Reemplaza las src con tus propias fotos -->
+                    <div class="photo-card">
+                        <img src="../recursos/imagenes/14diciembre2.jpeg" alt="Mi Princesa">
+                        <div class="photo-caption">Mi felicidad</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="../recursos/imagenes/22febrero.jpeg" alt="Te amo">
+                        <div class="photo-caption">Eres mi todo</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="https://placehold.co/400x400/fbc2d5/white?text=✨+Eres+única" alt="Eres única">
+                        <div class="photo-caption">Mi razón de ser</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="https://placehold.co/400x400/fad0c4/white?text=💖+Siempre+juntos" alt="Siempre juntos">
+                        <div class="photo-caption">Para siempre</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 0.8rem; color: #a55d78;">✨ Cada foto es un tesoro ✨</p>
+            </div>
+
+            <!-- Mini contador romántico -->
+            <div class="time-together">
+                <p>⏳ <strong>Tiempo desde que te elegí</strong> ⏳</p>
+                <div>
+                    <span class="time-numbers" id="counterDays">0</span>
+                    <span style="font-size: 1.2rem;"> días juntos</span>
+                </div>
+                <p style="font-size: 0.85rem;">... y cada segundo vale la pena</p>
+            </div>
+
+        </div>
+
+        <div class="footer-note">
+            🌙 Hecho con todo mi amor para ti · Eres mi sueño hecho realidad 🌙
+        </div>
+    </div>
+
+    <script>
+        // === 1. ANIMACIÓN MÁQUINA DE ESCRIBIR ===
+        const messages = [
+            "Cada vez que te veo, mi corazón late más fuerte... 💓",
+            "Tu sonrisa es el sol que alumbra mi mundo entero. ☀️",
+            "No cambiaría nada de nosotros... Eres perfecta. 💖",
+            "Gracias por llegar a mi vida y llenarla de amor. 🌹",
+            "Eres la mejor novia del mundo, y siempre lo serás. 👑"
+        ];
+        
+        let msgIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+        
+        function typeEffect() {
+            const currentMsg = messages[msgIndex];
+            if (isDeleting) {
+                typewriterElement.innerHTML = currentMsg.substring(0, charIndex - 1) + '<span class="cursor">|</span>';
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    msgIndex = (msgIndex + 1) % messages.length;
+                    setTimeout(typeEffect, 500);
+                } else {
+                    setTimeout(typeEffect, 50);
+                }
+            } else {
+                typewriterElement.innerHTML = currentMsg.substring(0, charIndex + 1) + '<span class="cursor">|</span>';
+                charIndex++;
+                if (charIndex === currentMsg.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2500);
+                } else {
+                    setTimeout(typeEffect, 80);
+                }
+            }
+        }
+        typeEffect();
+
+        // === 2. BOTÓN MÁGICO ===
+        const magicBtn = document.getElementById('magicBtn');
+        const secretMsg = document.getElementById('secretMessage');
+        
+        magicBtn.addEventListener('click', () => {
+            secretMsg.classList.toggle('show');
+            if (secretMsg.classList.contains('show')) {
+                magicBtn.textContent = '✨ Te Adoro ✨';
+                // Crear lluvia de corazones al hacer clic
+                createHeartRain();
+            } else {
+                magicBtn.textContent = '💖 Toca aquí 💖';
+            }
+        });
+
+        // === 3. LLUVIA DE CORAZONES (partículas flotantes) ===
+        function createHeartRain() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('floating-particle');
+                    const icons = ['❤️', '💖', '💗', '💓', '💕', '🌸', '🌹', '✨', '⭐'];
+                    heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                    heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                    heart.style.animationDelay = Math.random() * 1 + 's';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 8000);
+                }, i * 100);
+            }
+        }
+
+        // Crear partículas de fondo continuas (más suaves)
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const particle = document.createElement('div');
+                particle.classList.add('floating-particle');
+                const icons = ['❤️', '💖', '🌸', '✨'];
+                particle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+                particle.style.animationDuration = (Math.random() * 5 + 7) + 's';
+                particle.style.opacity = '0.4';
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 10000);
+            }
+        }, 1500);
+
+        // === 4. CONTADOR DESDE UNA FECHA ESPECIAL (cámbiala si quieres) ===
+        // Fecha de inicio: 7 de febrero de 2026 (como en tu contador)
+        const startDate = new Date(2026, 1, 7, 0, 0, 0);
+        
+        function updateCounter() {
+            const now = new Date();
+            const diffMs = now - startDate;
+            if (diffMs > 0) {
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                document.getElementById('counterDays').innerText = days;
+            } else {
+                document.getElementById('counterDays').innerText = '0';
+            }
+        }
+        updateCounter();
+        setInterval(updateCounter, 86400000); // actualiza cada día
+
+        // === 5. EFECTO DE CLIC EN LAS FOTOS (muestra un mensaje bonito) ===
+        const photos = document.querySelectorAll('.photo-card');
+        photos.forEach((photo, idx) => {
+            photo.addEventListener('click', () => {
+                const messagesPhoto = [
+                    "Te amo más que a nada en este mundo 💖",
+                    "Eres la mujer más hermosa que he conocido 🌹",
+                    "Cada día me enamoro más de ti ✨",
+                    "Contigo quiero envejecer, mi amor 💕"
+                ];
+                alert(messagesPhoto[idx % messagesPhoto.length]);
+                createHeartRain(); // pequeña lluvia de corazones al hacer clic
+            });
+        });
+
+        // Mensaje de bienvenida en consola
+        console.log("🌸 Página dedicada con mucho amor para ti, mi niña 🌸");
+    </script>
+</body>
+
+</html>

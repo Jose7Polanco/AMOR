@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Mi mundo eres tú · Diario de amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #d9c2a7;
+            background-image: repeating-linear-gradient(45deg, rgba(200, 170, 140, 0.2) 0px, rgba(200, 170, 140, 0.2) 2px, transparent 2px, transparent 8px);
+            font-family: 'Quicksand', sans-serif;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        /* Efecto de papel envejecido */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 40%, rgba(210, 180, 140, 0.15), rgba(160, 120, 80, 0.08));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Contenedor principal estilo libreta */
+        .notebook {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Tapa del diario */
+        .journal-cover {
+            background: #8b5e3c;
+            background: linear-gradient(145deg, #9b6e4a, #7a4e2e);
+            border-radius: 20px 20px 12px 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 200, 0.3);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #e8c48a;
+        }
+
+        .journal-cover h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            color: #f7e9c3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .journal-cover p {
+            color: #f0dcb0;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        /* Página interior (hoja de diario) */
+        .journal-page {
+            background: #fffaf0;
+            background: linear-gradient(to bottom, #fffcf5, #fff6e8);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        /* Líneas de libreta de fondo */
+        .journal-page::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 100%;
+            background: repeating-linear-gradient(transparent, transparent 28px, rgba(200, 170, 140, 0.15) 28px, rgba(200, 170, 140, 0.15) 29px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Fecha estilo diario */
+        .diary-date {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: #b87c4a;
+            border-bottom: 2px dashed #e6c8a8;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+        }
+
+        /* Entrada del diario */
+        .diary-entry {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #3e2a24;
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diary-entry p {
+            margin-bottom: 1rem;
+        }
+
+        .diary-entry .quote {
+            font-style: italic;
+            border-left: 4px solid #e8b88a;
+            padding-left: 1.2rem;
+            margin: 1rem 0;
+            color: #a0582c;
+        }
+
+        /* Notas adhesivas (post-its) */
+        .sticky-note {
+            background: #fff9c4;
+            padding: 1rem;
+            transform: rotate(-2deg);
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            border-bottom: 1px solid #f0e0a0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sticky-note.right {
+            transform: rotate(1.5deg);
+            background: #ffe0b5;
+            margin-left: 2rem;
+        }
+
+        .sticky-note.left {
+            transform: rotate(-1.5deg);
+            background: #d9e6c3;
+            margin-right: 2rem;
+        }
+
+        /* Polaroid */
+        .polaroid {
+            background: white;
+            padding: 12px 12px 20px 12px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-align: center;
+            margin: 1rem;
+            transition: transform 0.3s;
+            max-width: 220px;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polaroid .caption {
+            font-family: 'Caveat', cursive;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            color: #8b5e3c;
+        }
+
+        .polaroid.left-tilt {
+            transform: rotate(-6deg);
+            float: left;
+        }
+
+        .polaroid.right-tilt {
+            transform: rotate(5deg);
+            float: right;
+        }
+
+        /* Galería tipo collage */
+        .collage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            clear: both;
+        }
+
+        /* Lista de cosas que amas */
+        .loved-list {
+            background: #f7ede0;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #ecdbba;
+        }
+
+        .loved-list h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: #b87c4a;
+            text-align: center;
+        }
+
+        .list-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: #4a3028;
+            border-bottom: 1px dotted #ddc7a8;
+            padding: 0.3rem;
+        }
+
+        /* El sobre antiguo */
+        .antique-envelope {
+            background: #eeddbb;
+            background: linear-gradient(135deg, #f5e6d3, #e8d5bc);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            border: 1px solid #d4b68a;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .antique-envelope:hover {
+            background: #f5e6d3;
+            transform: translateY(-3px);
+        }
+
+        .seal {
+            font-size: 2rem;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .letter-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fffef5;
+            margin-top: 1rem;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .letter-content.show {
+            max-height: 500px;
+            padding: 1.2rem;
+        }
+
+        /* Contador de días romántico */
+        .counter-romance {
+            text-align: center;
+            background: #fff0e0;
+            border-radius: 60px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e6d0b5;
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #b5653c;
+            font-family: 'Caveat', cursive;
+        }
+
+        /* Botón de estrellas */
+        .star-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 0.5rem;
+        }
+
+        .star-btn:hover {
+            transform: scale(1.2);
+        }
+
+        /* Marco de hilo / cuerda */
+        .string-frame {
+            border: 2px solid #c9aa7b;
+            border-style: dashed;
+            border-radius: 20px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        /* Footer del diario */
+        .diary-footer {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            color: #9b7a5a;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        @media (max-width: 650px) {
+            .journal-page {
+                padding: 1rem;
+            }
+            .polaroid {
+                max-width: 160px;
+            }
+            .polaroid img {
+                height: 120px;
+            }
+            .polaroid.left-tilt, .polaroid.right-tilt {
+                float: none;
+                margin: 0.5rem auto;
+            }
+            .sticky-note.left, .sticky-note.right {
+                margin: 1rem 0;
+            }
+            .journal-cover h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="notebook">
+    
+    <!-- Tapa del diario -->
+    <div class="journal-cover">
+        <h1>📔 Mi diario de amor</h1>
+        <p>— Páginas escritas con el corazón —</p>
+    </div>
+
+    <!-- Página 1: Entrada Principal -->
+    <div class="journal-page">
+        <div class="diary-date">📅 26 de abril, 2026 · Un día cualquiera contigo</div>
+        
+        <div class="diary-entry">
+            <p>Hoy quiero escribirte algo que no sé si alguna vez podré decirte con todas las palabras que me gustaría. <strong>Tú llegaste y todo cambió.</strong> No sé cómo explicarlo, pero antes los días pasaban grises, y ahora cada amanecer tiene un motivo para ser hermoso.</p>
+            <p class="quote">"El amor no es mirarse el uno al otro, sino mirar juntos en la misma dirección." — Y creo que eso somos tú y yo.</p>
+            <p>Gracias por cada detalle, por cada risa, por cada silencio cómplice. Gracias por existir y por permitirme estar a tu lado.</p>
+        </div>
+
+        <!-- Nota adhesiva -->
+        <div class="sticky-note">
+            📌 PD: Ese día que te reíste tanto que casi te ahogas... sigo guardando ese recuerdo como un tesoro. 💕
+        </div>
+
+        <!-- Polaroid flotante izquierda -->
+        <div class="polaroid left-tilt">
+            <img src="../recursos/mm.jpeg" alt="Nosotros">
+            <div class="caption">✨ Tú y yo · Mi lugar favorito ✨</div>
+        </div>
+
+        <div class="diary-entry">
+            <p>Recuerdo perfectamente la primera vez que te vi. No sé si fue tu sonrisa, tu forma de caminar o simplemente algo en el aire, pero supe que eras especial. Y el tiempo solo me ha dado la razón.</p>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- Página 2: Collage de recuerdos -->
+    <div class="journal-page">
+        <div class="diary-date">📸 Fragmentos de nosotros</div>
+        
+        <div class="collage">
+            <div class="polaroid">
+                <img src="../recursos/4.jpeg" alt="Recuerdo 1">
+                <div class="caption">🌅 Ese atardecer</div>
+            </div>
+            <div class="polaroid">
+                <img src="../recursos/2.jpeg" alt="Recuerdo 2">
+                <div class="caption">💕 Tú y yo</div>
+            </div>
+            <div class="polaroid">
+                <img src="../recursos/3.jpeg" alt="Recuerdo 3">
+                <div class="caption">🌸 Mi felicidad</div>
+            </div>
+        </div>
+
+        <div class="sticky-note right">
+            🎀 "La vida es más bonita cuando te tengo cerca"
+        </div>
+
+        <div class="diary-entry">
+            <p>Cada foto es un pedacito de nuestra historia. Me encanta verlas y recordar cada momento. Los planes, las locuras, las risas. Y sé que vienen muchas más por vivir.</p>
+        </div>
+    </div>
+
+    <!-- Página 3: Cosas que me encantan de ti -->
+    <div class="journal-page">
+        <div class="diary-date">🌸 Cositas que enamoran de ti</div>
+        
+        <div class="loved-list">
+            <h3>♡ 12 cosas que me encantan de ti ♡</h3>
+            <div class="list-items" id="lovedList">
+                <!-- Las 12 razones se generarán con JS para ser más dinámicas -->
+            </div>
+        </div>
+
+        <div class="string-frame">
+            <div class="counter-romance">
+                <span style="font-size: 1.2rem;">⏳ Tiempo desde que empezó nuestra historia</span><br>
+                <span class="counter-number" id="daysTogether">0</span>
+                <span style="font-size: 1rem;"> días de pura magia ✨</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página 4: Sobre con carta de amor -->
+    <div class="journal-page">
+        <div class="diary-date">✉️ Una carta que guardo para ti</div>
+        
+        <div class="antique-envelope" id="envelopeBtn">
+            <div class="seal">🌸 💌 🌸</div>
+            <p style="font-family:'Caveat'; font-size:1rem;">✦ Abre este sobre sellado con amor ✦</p>
+            <div class="letter-content" id="letterContent">
+                <p style="font-family:'Playfair Display'; line-height:1.6;">
+                Mi amor,<br><br>
+                Si estás leyendo esto, es porque quiero que sepas algo muy importante: <strong>eres lo mejor que me ha pasado</strong>. 
+                No importa lo que pase, no importa los días difíciles, siempre voy a estar aquí para ti. Eres mi persona favorita, mi paz, mi locura, mi hogar.<br><br>
+                Te elijo hoy, mañana y siempre. Y aunque no soy perfecto, prometo amarte con todo lo que soy.<br><br>
+                <span style="font-family:'Caveat'; font-size:1.3rem;">Con todo mi corazón, <br>Tu persona 💖</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="sticky-note left">
+            🌟 "Cada día me enamoro un poquito más de ti"
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- Página 5: Interacción especial -->
+    <div class="journal-page">
+        <div class="diary-date">🎁 Recuerdos que atesoro</div>
+        
+        <div class="diary-entry">
+            <p>Hay momentos contigo que quisiera enmarcar. Como cuando me miras con esos ojos y se me olvida todo lo demás. O cuando te ríes y todo a mi alrededor se vuelve más brillante.</p>
+        </div>
+
+        <!-- Botón interactivo para lluvia de estrellas -->
+        <div style="text-align: center; margin: 1.5rem 0;">
+            <button class="star-btn" id="starBtn">🌠 Haz clic para una sorpresa 🌠</button>
+        </div>
+
+        <div class="diary-entry">
+            <p>Te quiero más de lo que las palabras pueden expresar. Por eso escribo esto, para que si algún día lo lees, sepas que cada letra sale del corazón.</p>
+        </div>
+    </div>
+
+    <div class="diary-footer">
+        💫 Y colorín colorado... este cuento de amor no ha terminado, solo acaba de empezar. 💫
+    </div>
+</div>
+
+<script>
+    // === 1. LISTA DE COSAS QUE AMA DE ELLA ===
+    const thingsILove = [
+        "Tu sonrisa ilumina mis días ☀️",
+        "La forma en que dices mi nombre 🗣️",
+        "Tu risa contagiosa 😂",
+        "Cómo te preocupas por los demás 💝",
+        "Esos momentos de silencio cómplice 🤫",
+        "Tu forma de ver la vida 🌈",
+        "Cuando bailamos sin música 💃",
+        "Tus abrazos que lo curan todo 🤗",
+        "La pasión con la que sueñas 🌟",
+        "Tu mirada cuando estás feliz 👀",
+        "Hasta tus manías, que me encantan 🥰",
+        "Simplemente... porque eres tú ✨"
+    ];
+    
+    const lovedListContainer = document.getElementById('lovedList');
+    thingsILove.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'list-item';
+        div.innerHTML = `💗 ${item}`;
+        lovedListContainer.appendChild(div);
+    });
+    
+    // === 2. CONTADOR DE DÍAS ===
+    const startDate = new Date(2026, 1, 7, 0, 0, 0);
+    function updateDaysCounter() {
+        const now = new Date();
+        const diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('daysTogether').innerText = diff >= 0 ? diff : 0;
+    }
+    updateDaysCounter();
+    setInterval(updateDaysCounter, 86400000);
+    
+    // === 3. SOBRE QUE SE ABRE ===
+    const envelope = document.getElementById('envelopeBtn');
+    const letter = document.getElementById('letterContent');
+    envelope.addEventListener('click', () => {
+        letter.classList.toggle('show');
+        if (letter.classList.contains('show')) {
+            // Crear efecto de confeti de flores
+            createStarRain(15);
+        }
+    });
+    
+    // === 4. BOTÓN DE ESTRELLAS (lluvia de estrellas y flores) ===
+    const starBtn = document.getElementById('starBtn');
+    starBtn.addEventListener('click', () => {
+        createStarRain(40);
+        // Cambiar temporalmente el fondo del diario
+        const pages = document.querySelectorAll('.journal-page');
+        pages.forEach(page => {
+            page.style.transition = 'background 0.3s';
+            page.style.background = '#fffef7';
+            setTimeout(() => {
+                page.style.background = '';
+            }, 500);
+        });
+        alert("✨ ¡Estrellitas y flores para ti! Porque te mereces toda la magia del mundo ✨");
+    });
+    
+    function createStarRain(count) {
+        const icons = ['⭐', '🌟', '✨', '💫', '🌸', '🌼', '🌻', '💖', '❤️'];
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const star = document.createElement('div');
+                star.style.position = 'fixed';
+                star.style.pointerEvents = 'none';
+                star.style.zIndex = '999';
+                star.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = '-30px';
+                star.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                star.style.animation = 'fallStar 4s ease-in forwards';
+                star.style.opacity = '0.8';
+                document.body.appendChild(star);
+                
+                // Animación keyframe dinámica
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fallStar {
+                        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+                        15% { opacity: 1; }
+                        85% { opacity: 0.8; }
+                        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+                    }
+                `;
+                if (!document.querySelector('#dynamic-star-style')) {
+                    style.id = 'dynamic-star-style';
+                    document.head.appendChild(style);
+                }
+                
+                setTimeout(() => star.remove(), 4200);
+            }, i * 80);
+        }
+    }
+    
+    // === 5. EFECTO DE CLIC EN POLAROIDS (mensaje bonito) ===
+    const polaroids = document.querySelectorAll('.polaroid');
+    polaroids.forEach(polaroid => {
+        polaroid.addEventListener('click', () => {
+            const messages = [
+                "💕 Ese momento lo guardo en mi corazón",
+                "🌹 Me encanta esta foto, eres hermosa",
+                "💖 Recuerdo perfectamente ese día",
+                "✨ Contigo cualquier momento es especial"
+            ];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+            createStarRain(8);
+        });
+    });
+    
+    // Iniciar con algunas estrellas al cargar
+    window.addEventListener('load', () => {
+        setTimeout(() => createStarRain(12), 600);
+    });
+    
+    // Efecto hover en las páginas
+    console.log("📔 Diario de amor abierto · Para ti, mi niña bonita");
+</script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>RECUERDITOS</title>
+    <title>GALERIA DE RECUERDOS</title>
     <style>
         * {
             margin: 0;
@@ -157,27 +157,28 @@
 
         /* fondos únicos para cada carta */
         .img-primer-mes {
-            background-image: linear-gradient(125deg, #ffb6c1, #ff9eb5), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSI4IiBmaWxsPSIjZmZkY2UwIiBmaWxsLW9wYWNpdHk9IjAuNiIvPjwvc3ZnPg==');
-            background-blend-mode: overlay;
-            background-size: 30px;
+            background-image: url('./recursos/imagenes/dianovio.jpeg');
+            background-size: cover;
+            background-position: center;
         }
 
         .img-segundo-mes {
-            background-image: linear-gradient(125deg, #fbc8b5, #f7b2a0), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cG9seWdvbiBwb2ludHM9IjIwLDYgMjQsMTQgMzIsMTYgMjYsMjIgMjgsMzAgMjAsMjYgMTIsMzAgMTQsMjIgOCwxNiAxNiwxNCIgZmlsbD0iI2ZmZWNlMyIgZmlsbC1vcGFjaXR5PSIwLjciLz48L3N2Zz4=');
-            background-blend-mode: overlay;
-            background-size: 32px;
+            background-image: url('./recursos/imagenes/playitajunto.jpeg');
+            background-size: cover;
+            background-position: center;
         }
 
         .img-contador {
-            background-image: linear-gradient(125deg, #c5e0f4, #b0d4f0), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxMiIgc3Ryb2tlPSIjZmZmZmZmIiBmaWxsPSIjZmZkY2QwIiBmaWxsLW9wYWNpdHk9IjAuNSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48L3N2Zz4=');
-            background-blend-mode: overlay;
-            background-size: 35px;
+            background-image: url('./recursos/imagenes/atardecer.jpeg');
+            background-size: cover;
+            background-position: center;
+            
         }
 
         .img-extra {
-            background-image: linear-gradient(125deg, #f6e0b5, #fedba5), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBkPSJNMjAgMTBMMTUgMjBMMjAgMzBMMjUgMjBMMjAgMTBaIiBmaWxsPSIjZmZkY2QwIiBmaWxsLW9wYWNpdHk9IjAuNyIvPjwvc3ZnPg==');
-            background-blend-mode: overlay;
-            background-size: 32px;
+            background-image: url('./recursos/imagenes/manitosmanilla.jpeg');
+            background-size: cover;
+            background-position: center;
         }
 
         .card-content {
@@ -274,7 +275,7 @@
                         <span class="badge-mes">⭐ primer latido</span>
                     </div>
                     <div class="card-content">
-                        <h3>📆 Nuestro primer mes</h3>
+                        <h3>📆 Primer mes</h3>
                         <p>El comienzo de todo, los días que supieron a miel y descubrimiento. Un mes para recordar
                             siempre.</p>
                         <div class="enter-icon">➡️</div>
@@ -303,15 +304,16 @@
                         <span class="badge-mes">⏳ TIEMPO JUNTO A TI</span>
                     </div>
                     <div class="card-content">
-                        <h3>❤️ Contador de días</h3>
-                        <p>Días, horas, minutos desde que empezó nuestra historia. Mi tiempo favorito es el que paso contigo.</p>
+                        <h3>❤️ Tiempo juntos</h3>
+                        <p>Días, horas, minutos desde que empezó nuestra historia. Mi tiempo favorito es el que paso
+                            contigo.</p>
                         <div class="enter-icon">➡️</div>
                     </div>
                 </div>
             </a>
 
             <!-- PÁGINA 4: EXTRA (carta/galería/lo que sueñes) -->
-            <a href="./html/111.html" class="card-link">
+            <a href="./html/primerapaginita.html" class="card-link">
                 <div class="card">
                     <div class="card-img img-extra">
                         <span class="badge-mes">🎁 para ti</span>
@@ -324,25 +326,26 @@
                     </div>
                 </div>
             </a>
+
+            
         </div>
 
         <div class="footer-index">
             <div class="fecha-actual" id="fechaDinamica"></div>
-            <div style="margin-top: 12px; font-size: 0.8rem;">💖 TE AMO 💖</div>
+            <div style="margin-top: 12px; font-size: 0.8rem;">💖 TE AMO 💖</div><br>
+            <h6>CADA PAGUINITA FUE HECHA CON AMOR PARA TI</h6>
         </div>
     </div>
 
     <script>
-        // fecha bonita dinámica para el footer
-        const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-        const hoy = new Date();
-        const fechaFormateada = `${hoy.getDate()} de ${meses[hoy.getMonth()]} de ${hoy.getFullYear()}`;
-        document.getElementById("fechaDinamica").innerHTML = `📅 ${fechaFormateada} · Mi dia favorito`;
-
+        const diaFijo = 7;
+        const mesFijo = "febrero";  // o el número: meses[1] para febrero
+        const añoFijo = 2026;
+        document.getElementById("fechaDinamica").innerHTML = `📅 ${diaFijo} de ${mesFijo} de ${añoFijo} · Mi Dia Favorito ❤️`;
         // efecto adicional: mensaje en consola
         console.log("✨ Índice de 4 páginas listo: Primer mes, Segundo mes, Contador y Página extra ✨");
     </script>
 
 </body>
 
-</html>
+</html>   
