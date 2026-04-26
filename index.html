@@ -181,6 +181,30 @@
             background-position: center;
         }
 
+        /* imagen para la nueva página (Para mi amor) */
+        .img-contigo-es-mejor {
+            background-image: url('./recursos/imagenes/22.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+
+        /* clases para los 3 nuevos espacios restantes (relleno con #) */
+        .img-nuevo-espacio {
+            background-color: #ffe2ec;
+            background-image: repeating-linear-gradient(45deg, #ffc0d0 0px, #ffc0d0 2px, transparent 2px, transparent 8px);
+            position: relative;
+        }
+        .img-nuevo-espacio::after {
+            content: "❤️";
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            font-size: 28px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
         .card-content {
             padding: 1.5rem 1.2rem 1.8rem;
             flex: 1;
@@ -252,6 +276,19 @@
                 font-size: 1.4rem;
             }
         }
+
+        /* badge especial para nuevos espacios con # */
+        .badge-nuevo {
+            background: rgba(245, 220, 230, 0.95);
+            backdrop-filter: blur(6px);
+            border-radius: 60px;
+            padding: 0.3rem 1rem;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #b35d7a;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
@@ -268,7 +305,7 @@
         </div>
 
         <div class="grid-meses">
-            <!-- PÁGINA 1: PRIMER MES -->
+            <!-- PÁGINA 1: PRIMER MES (original intacto) -->
             <a href="./html/mes1.html" class="card-link">
                 <div class="card">
                     <div class="card-img img-primer-mes">
@@ -283,7 +320,7 @@
                 </div>
             </a>
 
-            <!-- PÁGINA 2: SEGUNDO MES -->
+            <!-- PÁGINA 2: SEGUNDO MES (original intacto) -->
             <a href="./html/mes2.html" class="card-link">
                 <div class="card">
                     <div class="card-img img-segundo-mes">
@@ -297,7 +334,7 @@
                 </div>
             </a>
 
-            <!-- PÁGINA 3: CONTADOR (tiempo juntos) -->
+            <!-- PÁGINA 3: CONTADOR (tiempo juntos) original intacto -->
             <a href="./html/contador.html" class="card-link">
                 <div class="card">
                     <div class="card-img img-contador">
@@ -312,7 +349,7 @@
                 </div>
             </a>
 
-            <!-- PÁGINA 4: EXTRA (carta/galería/lo que sueñes) -->
+            <!-- PÁGINA 4: EXTRA (primerapaginita) original intacto -->
             <a href="./html/primerapaginita.html" class="card-link">
                 <div class="card">
                     <div class="card-img img-extra">
@@ -327,25 +364,83 @@
                 </div>
             </a>
 
-            
+            <!-- ====== NUEVO ESPACIO 5: PÁGINA "PARA MI AMOR" (llena con la página romántica) ====== -->
+            <a href="./html/contigoesmejor.html" class="card-link">
+                <div class="card">
+                    <div class="card-img img-contigo-es-mejor">
+                        <span class="badge-mes">🌹 MI NIÑA BONITA</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>💖 Cada vez mas enamorado </h3>
+                        <p>Eres perfecta para mi, incluso en tus locuras ✨</p>
+                        <div class="enter-icon">➡️</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ====== NUEVO ESPACIO 6: reservado (relleno #) ====== -->
+            <a href="#" class="card-link">
+                <div class="card">
+                    <div class="card-img img-nuevo-espacio">
+                        <span class="badge-nuevo"># # # #</span>
+                    </div>
+                    <div class="card-content">
+                        <h3># # # #</h3>
+                        <p># # # # # # # # # # # # # # # # # # # # # # # # # # # # # #</p>
+                        <div class="enter-icon">#</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ====== NUEVO ESPACIO 7: reservado (relleno #) ====== -->
+            <a href="#" class="card-link">
+                <div class="card">
+                    <div class="card-img img-nuevo-espacio">
+                        <span class="badge-nuevo"># # # #</span>
+                    </div>
+                    <div class="card-content">
+                        <h3># # # #</h3>
+                        <p># # # # # # # # # # # # # # # # # # # # # # # # # # # # # #</p>
+                        <div class="enter-icon">#</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ====== NUEVO ESPACIO 8: reservado (relleno #) ====== -->
+            <a href="#" class="card-link">
+                <div class="card">
+                    <div class="card-img img-nuevo-espacio">
+                        <span class="badge-nuevo"># # # #</span>
+                    </div>
+                    <div class="card-content">
+                        <h3># # # #</h3>
+                        <p># # # # # # # # # # # # # # # # # # # # # # # # # # # # # #</p>
+                        <div class="enter-icon">#</div>
+                    </div>
+                </div>
+            </a>
         </div>
 
         <div class="footer-index">
             <div class="fecha-actual" id="fechaDinamica"></div>
-            <div style="margin-top: 12px; font-size: 0.8rem;">💖 TE AMO 💖</div><br>
-            <h6>CADA PAGUINITA FUE HECHA CON AMOR PARA TI</h6>
+            <div style="margin-top: 12px; font-size: 0.8rem;">💖 TE AMO 💖</div>
+            <div style="font-size: 0.7rem; margin-top: 6px; opacity: 0.8;">✨ Cada paginita fue hecha con amor para ti ✨</div>
         </div>
     </div>
 
     <script>
         const diaFijo = 7;
-        const mesFijo = "febrero";  // o el número: meses[1] para febrero
+        const mesFijo = "febrero";
         const añoFijo = 2026;
         document.getElementById("fechaDinamica").innerHTML = `📅 ${diaFijo} de ${mesFijo} de ${añoFijo} · Mi Dia Favorito ❤️`;
-        // efecto adicional: mensaje en consola
-        console.log("✨ Índice de 4 páginas listo: Primer mes, Segundo mes, Contador y Página extra ✨");
+        
+        console.log("✨✨ INDEX CON 8 ESPACIOS ✨✨");
+        console.log("❤️ Los 4 espacios originales se conservan intactos.");
+        console.log("🌹 El quinto espacio ahora enlaza a 'para-mi-amor.html' (la página romántica que creaste).");
+        console.log("📌 Los espacios 6,7,8 están rellenos con '#' listos para que los personalices después.");
+        console.log("💎 Recuerda guardar tu página romántica como 'para-mi-amor.html' dentro de la carpeta /html/");
     </script>
 
 </body>
 
-</html>   
+</html>
