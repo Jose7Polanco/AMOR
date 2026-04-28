@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Canción · Para ti</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .music-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .vinyl {
+            font-size: 5rem;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-back {
+            background: #ff6b8b;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+            margin-top: 2rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        audio {
+            margin: 1rem 0;
+            border-radius: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music-container">
+        <div class="vinyl">🎵💿🎵</div>
+        <h1>Tú, mi canción</h1>
+        <p>La melodía que suena cuando pienso en ti</p>
+        <audio controls autoplay loop>
+            <source src="../recursos/canciones/20vidasmas_MartinElias.mp3" type="audio/mpeg">
+            te amo ❤️
+        </audio>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">🎧 Hay canciones que se escuchan, otras que se sienten, y esa
+            me hace sentirte a ti</p>
+        <a href="../index.html" class="btn-back">↩️ Volver al inicio</a>
+    </div>
+</body>
+
+</html>
