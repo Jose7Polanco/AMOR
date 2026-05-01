@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesoro escondido · Solo para ti</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #1e0f07;
+            background: linear-gradient(145deg, #2c1810, #140a05);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .chest-container {
+            max-width: 600px;
+            background: #5c3a1e;
+            background: linear-gradient(135deg, #7a5530, #4a2e15);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 200, 0.3);
+            border: 5px solid #b8860b;
+            position: relative;
+        }
+
+        .chest-container::before {
+            content: "🔒";
+            font-size: 3rem;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            transform: rotate(15deg);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            color: #ffd98c;
+            font-size: 2rem;
+        }
+
+        .riddle {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+            text-align: center;
+            color: #f0dbb2;
+        }
+
+        .password-input {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .password-input input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 40px;
+            background: #fff2e0;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .unlock-btn {
+            background: #d4a05a;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            color: #2c1810;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .unlock-btn:hover {
+            background: #f0b86e;
+            transform: scale(1.02);
+        }
+
+        .treasure {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-out;
+            background: rgba(255, 245, 220, 0.9);
+            border-radius: 20px;
+            margin-top: 1rem;
+        }
+
+        .treasure.show {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .treasure-content {
+            text-align: center;
+            color: #4a2e15;
+        }
+
+        .treasure-content p {
+            margin: 0.8rem 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #8b5a2b;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: #d4a05a;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chest-container">
+        <h1>🗝️ Tesoro escondido 🗝️</h1>
+        <p style="text-align: center; color: #ffd98c;">Solo para mi princesita hermosa</p>
+
+        <div class="riddle">
+            <p>🔐 Adivina la contraseña 🔐</p>
+        </div>
+
+        <div class="password-input">
+            <input type="text" id="passwordInput" placeholder="Escribe aquí...">
+            <button class="unlock-btn" id="unlockBtn">Abrir cofre 🔓</button>
+        </div>
+
+        <div class="treasure" id="treasureBox">
+            <div class="treasure-content">
+                <p style="font-family: 'Cinzel'; font-size: 1.2rem;">Amorcito mío,
+                    No hay un solo día en que no agradezca al universo por haberte puesto en mi camino. Eres esa luz que
+                    ilumina hasta mis días más grises, la calma después de la tormenta y la aventura más bonita que he
+                    vivido.
+                    Me encanta cómo ríes, cómo me miras, cómo dices mi nombre. Me encanta todo de ti, incluso esos
+                    pequeños gestos que ni siquiera notas. Contigo aprendí que el amor no se busca, simplemente llega y
+                    transforma todo.
+                    Quiero seguir construyendo recuerdos a tu lado, viajar contigo, reír, llorar de felicidad y
+                    envejecer juntos. Porque no hay nadie más en este mundo que pueda llenar mi corazón como tú lo
+                    haces.</p>
+                <p>💕 Eres mi tesoro más valioso 💕</p>
+            </div>
+        </div>
+
+        <div class="hint" id="hint">🔎 Pista: No ahi jajaja</div>
+
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-btn">↩️ Volver</a>
+        </div>
+    </div>
+
+    <script>
+        const unlockBtn = document.getElementById('unlockBtn');
+        const passwordInput = document.getElementById('passwordInput');
+        const treasureBox = document.getElementById('treasureBox');
+
+        unlockBtn.addEventListener('click', () => {
+            const password = passwordInput.value.toLowerCase().trim();
+            // La contraseña es 7febrero (o puedes cambiarla)
+            if (password === '7 febrero 2026' || password === '7 de febrero 2026' || password === '7febrero2026') {
+                treasureBox.classList.add('show');
+                unlockBtn.disabled = true;
+                unlockBtn.textContent = '¡Cofre abierto! 💖';
+            } else {
+                alert('❌ Contraseña incorrecta... vuelve a intentarlo, mi amor ❤️');
+                // Crear un efecto de vibración
+                const container = document.querySelector('.chest-container');
+                container.style.transform = 'translateX(5px)';
+                setTimeout(() => container.style.transform = '', 100);
+            }
+        });
+    </script>
+</body>
+
+</html>

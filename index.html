@@ -172,7 +172,7 @@
             background-image: url('./recursos/imagenes/atardecer.jpeg');
             background-size: cover;
             background-position: center;
-            
+
         }
 
         .img-extra {
@@ -187,24 +187,20 @@
             background-size: cover;
             background-position: center;
         }
-        
- .img-nuestra-cancion {
+
+        .img-nuestra-cancion {
             background-image: url('./recursos/imagenes/14diciembre4.jpeg');
             background-size: cover;
             background-position: center;
         }
-        /* clases para los 3 nuevos espacios restantes (relleno con #) */
-        
-        
-        .img-nuevo-espacio::after {
-            content: "❤️";
-            position: absolute;
-            bottom: 10px;
-            right: 12px;
-            font-size: 28px;
-            opacity: 0.3;
-            pointer-events: none;
+
+        .img-tesoro {
+            background-image: url('./recursos/imagenes/tesoro.jpeg');
+            background-size: cover;
+            background-position: center;
         }
+
+        
 
         .card-content {
             padding: 1.5rem 1.2rem 1.8rem;
@@ -379,7 +375,6 @@
                 </div>
             </a>
 
-            <!-- ====== NUEVO ESPACIO 6: reservado (relleno #) ====== -->
             <a href="./html/cancion.html" class="card-link">
                 <div class="card">
                     <div class="card-img img-nuestra-cancion">
@@ -393,16 +388,15 @@
                 </div>
             </a>
 
-            <!-- ====== NUEVO ESPACIO 7: reservado (relleno #) ====== -->
-            <a href="#" class="card-link">
+            <a href="./html/tesoro.html" class="card-link">
                 <div class="card">
-                    <div class="card-img img-nuevo-espacio">
-                        <span class="badge-nuevo"># # # #</span>
+                    <div class="card-img img-tesoro">
+                        <span class="badge-nuevo">🪙 Mi tesoro</span>
                     </div>
                     <div class="card-content">
-                        <h3># # # #</h3>
-                        <p># # # # # # # # # # # # # # # # # # # # # # # # # # # # # #</p>
-                        <div class="enter-icon">#</div>
+                        <h3>💫 Eres mi destino favorito</h3>
+                        <p>No hay riqueza en el mundo que se compare con tenerte</p>
+                        <div class="enter-icon">➡️</div>
                     </div>
                 </div>
             </a>
@@ -425,7 +419,8 @@
         <div class="footer-index">
             <div class="fecha-actual" id="fechaDinamica"></div>
             <div style="margin-top: 12px; font-size: 0.8rem;">💖 TE AMO 💖</div>
-            <div style="font-size: 0.7rem; margin-top: 6px; opacity: 0.8;">✨ Cada paginita fue hecha con amor para ti ✨</div>
+            <div style="font-size: 0.7rem; margin-top: 6px; opacity: 0.8;">✨ Cada paginita fue hecha con amor para ti ✨
+            </div>
         </div>
     </div>
 
@@ -434,7 +429,7 @@
         const mesFijo = "febrero";
         const añoFijo = 2026;
         document.getElementById("fechaDinamica").innerHTML = `📅 ${diaFijo} de ${mesFijo} de ${añoFijo} · Mi Dia Favorito ❤️`;
-        
+
         console.log("✨✨ INDEX CON 8 ESPACIOS ✨✨");
         console.log("❤️ Los 4 espacios originales se conservan intactos.");
         console.log("🌹 El quinto espacio ahora enlaza a 'para-mi-amor.html' (la página romántica que creaste).");

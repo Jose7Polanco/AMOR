@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Nuestro Tercer Mes ❤️</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Quicksand:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #d9c2a7;
+            background-image: repeating-linear-gradient(45deg, rgba(200, 170, 140, 0.2) 0px, rgba(200, 170, 140, 0.2) 2px, transparent 2px, transparent 8px);
+            font-family: 'Quicksand', sans-serif;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 40%, rgba(210, 180, 140, 0.15), rgba(160, 120, 80, 0.08));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .notebook {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .journal-cover {
+            background: #8b5e3c;
+            background: linear-gradient(145deg, #9b6e4a, #7a4e2e);
+            border-radius: 20px 20px 12px 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 200, 0.3);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #e8c48a;
+        }
+
+        .journal-cover h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            color: #f7e9c3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .journal-cover p {
+            color: #f0dcb0;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .journal-page {
+            background: #fffaf0;
+            background: linear-gradient(to bottom, #fffcf5, #fff6e8);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .journal-page::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 100%;
+            background: repeating-linear-gradient(transparent, transparent 28px, rgba(200, 170, 140, 0.15) 28px, rgba(200, 170, 140, 0.15) 29px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .diary-date {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: #b87c4a;
+            border-bottom: 2px dashed #e6c8a8;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+        }
+
+        .diary-entry {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #3e2a24;
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diary-entry p {
+            margin-bottom: 1rem;
+        }
+
+        .diary-entry .quote {
+            font-style: italic;
+            border-left: 4px solid #e8b88a;
+            padding-left: 1.2rem;
+            margin: 1rem 0;
+            color: #a0582c;
+        }
+
+        .sticky-note {
+            background: #fff9c4;
+            padding: 1rem;
+            transform: rotate(-2deg);
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            border-bottom: 1px solid #f0e0a0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sticky-note.right {
+            transform: rotate(1.5deg);
+            background: #ffe0b5;
+            margin-left: 2rem;
+        }
+
+        .sticky-note.left {
+            transform: rotate(-1.5deg);
+            background: #d9e6c3;
+            margin-right: 2rem;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 20px 12px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-align: center;
+            margin: 1rem;
+            transition: transform 0.3s;
+            max-width: 220px;
+            cursor: pointer;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            background: #f0e0cc;
+        }
+
+        .polaroid .caption {
+            font-family: 'Caveat', cursive;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            color: #8b5e3c;
+        }
+
+        .polaroid.left-tilt {
+            transform: rotate(-6deg);
+            float: left;
+        }
+
+        .polaroid.right-tilt {
+            transform: rotate(5deg);
+            float: right;
+        }
+
+        .collage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            clear: both;
+        }
+
+        .loved-list {
+            background: #f7ede0;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #ecdbba;
+        }
+
+        .loved-list h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: #b87c4a;
+            text-align: center;
+        }
+
+        .list-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: #4a3028;
+            border-bottom: 1px dotted #ddc7a8;
+            padding: 0.3rem;
+        }
+
+        .antique-envelope {
+            background: #eeddbb;
+            background: linear-gradient(135deg, #f5e6d3, #e8d5bc);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            border: 1px solid #d4b68a;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .antique-envelope:hover {
+            background: #f5e6d3;
+            transform: translateY(-3px);
+        }
+
+        .seal {
+            font-size: 2rem;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .letter-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #fffef5;
+            margin-top: 1rem;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .letter-content.show {
+            max-height: 500px;
+            padding: 1.2rem;
+        }
+
+        .counter-romance {
+            text-align: center;
+            background: #fff0e0;
+            border-radius: 60px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e6d0b5;
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #b5653c;
+            font-family: 'Caveat', cursive;
+        }
+
+        .star-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 0.5rem;
+            background: #f3e5c9;
+            border-radius: 50px;
+            width: 80%;
+            max-width: 280px;
+            font-family: 'Caveat', cursive;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .star-btn:hover {
+            transform: scale(1.05);
+            background: #ffefcf;
+        }
+
+        .string-frame {
+            border: 2px solid #c9aa7b;
+            border-style: dashed;
+            border-radius: 20px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .diary-footer {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            color: #000000;
+            margin-top: 2rem;
+            font-size: 1rem;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        @media (max-width: 650px) {
+            .journal-page {
+                padding: 1rem;
+            }
+
+            .polaroid {
+                max-width: 160px;
+            }
+
+            .polaroid img {
+                height: 120px;
+            }
+
+            .polaroid.left-tilt,
+            .polaroid.right-tilt {
+                float: none;
+                margin: 0.5rem auto;
+            }
+
+            .sticky-note.left,
+            .sticky-note.right {
+                margin: 1rem 0;
+            }
+
+            .journal-cover h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notebook">
+        <div class="journal-cover">
+            <h1>🎉 3 meses a tu lado 🎉</h1>
+            <p>— Un trimestre de magia, risas y amor infinito —</p>
+        </div>
+
+        <!-- PÁGINA 1: introducción tres meses -->
+        <div class="journal-page">
+            <div class="diary-date">❤️ 3 MESES QUE HAN VALIDO ORO A TU LADO ❤️</div>
+            <div class="diary-entry">
+                <p>¡Felices <strong>TRES MESES</strong>, amor de mi vida! 🌟 No puedo creer que hayan pasado 3 meses
+                    desde que el destino decidió unirnos, han sido <strong>3 meses llenos de magia</strong>, de conocer
+                    cada rinconcito de tu alma y de aprender que contigo todo es mejor.</p>
+                <p class="quote">"Tres meses contigo equivalen a mil vidas de felicidad. Gracias por cada instante, por
+                    cada abrazo y cada te quiero."</p>
+                <p>Recuerdo cuando empezamos a construir esto, era como un sueño del que no quería despertar, hoy,
+                    después de <strong>tres meses</strong>, sigo soñando, pero esta vez sé que es real porque te miro y
+                    estás ahí ❤️</p>
+            </div>
+            <div class="sticky-note">
+                📌 ¡Lo mejor de estos 3 meses? Cada amanecer sabiendo que te tengo. Y las mil y una aventuras que aún
+                nos esperan amor. 💑
+            </div>
+            <div class="polaroid left-tilt">
+                <img src="../recursos/imagenes/dianovio3.jpeg" alt="Nosotros 3 meses"
+                    onerror="this.src='https://placehold.co/400x300/f7ede0/b87c4a?text=Tú+y+yo+3+meses'">
+                <div class="caption">✨ Tres meses, un solo corazón ✨</div>
+            </div>
+            <div class="diary-entry">
+                <p>Y pensar que todo empezó de una manera rara casi sin querer y hoy ya tenemos <strong>tres meses
+                        completos</strong>
+                    llenos de complicidad, conversaciones hasta tarde, planes y mucho mucho amor. Contigo cada día es un
+                    regalo mi preciosura.</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- PÁGINA 2: Collage celebrando 3 meses -->
+        <div class="journal-page">
+            <div class="diary-date">📸 3 meses en que te amo cada dia mas</div>
+            <div class="collage">
+                <div class="polaroid">
+                    <img src="../recursos/imagenes/playitajunto.jpeg" alt="Celebrando juntos"
+                        onerror="this.src='https://placehold.co/400x300/f7ede0/b87c4a?text=Nuestro+mes+1'">
+                    <div class="caption">🎈 Te Adoro</div>
+                </div>
+                <div class="polaroid">
+                    <img src="../recursos/imagenes/dianovio2.jpeg" alt="Momento especial"
+                        onerror="this.src='https://placehold.co/400x300/f7ede0/b87c4a?text=Abrazo+eterno'">
+                    <div class="caption">💕 Te amo</div>
+                </div>
+                <div class="polaroid">
+                    <img src="../recursos/imagenes/fotitomayolo.jpeg" alt="Tres meses"
+                        onerror="this.src='https://placehold.co/400x300/f7ede0/b87c4a?text=Llegamos+a+3+meses'">
+                    <div class="caption">🌸 Eres todo para mi</div>
+                </div>
+            </div>
+            <div class="sticky-note right">
+                🎀 "Después de 3 meses, te sigo eligiendo una y otra vez"
+            </div>
+            <div class="diary-entry">
+                <p>Cada mes marca un pedacito de este viaje, de los nervios del primer mes, a la confianza del segundo,
+                    y ahora celebrando <strong>tres meses</strong> como si fuera el primer día, pero con la certeza de
+                    quienes se tienen el uno al otro. ¡Y lo mejor es que esto solo empieza!</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: 12 razones (celebrando 3 meses) + contador -->
+        <div class="journal-page">
+            <div class="diary-date">✨ 3 meses, 12 razones infinitas ✨</div>
+            <div class="loved-list">
+                <h3>♡ 12 razones por las que estos 3 meses han sido mágicos ♡</h3>
+                <div class="list-items" id="lovedList"></div>
+            </div>
+            <div class="string-frame">
+                <div class="counter-romance">
+                    <span style="font-size: 1.2rem;">⏳ Hemos construido juntos</span><br>
+                    <span class="counter-number" id="daysTogether">0</span>
+                    <span style="font-size: 1rem;"> días de amor incondicional 💖</span><br>
+                    <span style="font-size: 0.9rem;">(y seguimos sumando sonrisas)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: Carta especial por 3 MESES -->
+        <div class="journal-page">
+            <div class="diary-date">💌 Cartita para mi princesita</div>
+            <div class="antique-envelope" id="envelopeBtn">
+                <div class="seal">💌 🌟 3 MESES 🌟 💌</div>
+                <p style="font-family:'Caveat'; font-size:1rem;">✦ Abre esta carta sellada con un trimestre de amor ✦
+                </p>
+                <div class="letter-content" id="letterContent">
+                    <p style="font-family:'Playfair Display'; line-height:1.6;">
+                        Mi niña bonita,<br><br>
+                        Hoy cumplimos <strong>tres meses juntos</strong> y no sé cómo agradecer al universo por haberte
+                        puesto en mi camino, estos días han sido los más felices de mi vida, me enamoro cada día más
+                        de tu forma de mirar, de tu risa, de la manera en que haces especial hasta el momento más
+                        simple.<br><br>
+                        Gracias por cada mensaje de buenos días, por cada noche compartida, por los planes que hicimos
+                        realidad y los que aún soñamos <strong>tres meses es solo el comienzo</strong>, pero siento que
+                        te conozco de siempre, prometo seguir cuidando cada risa, cada abrazo, cada "te amo" y todo lo
+                        lindo que haces por mi ni reina hermosa.<br><br>
+                        Eres mi lugar favorito en el mundo. ❤️ <br>
+                        <span style="font-family:'Caveat'; font-size:1.3rem;">Con todo mi amor para mi noviecita
+                            hermosa, <br>Tu
+                            amorcito 🥰</span>
+                    </p>
+                </div>
+            </div>
+            <div class="sticky-note left">
+                🌟 "Cada día de estos 3 meses me ha recordado por qué eres mi persona favorita"
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- PÁGINA 5: Interacción especial + lluvia de estrellas por 3 meses -->
+        <div class="journal-page">
+            <div class="diary-date">🎉 Celebremos nuestros 3 meses 🎉</div>
+            <div class="diary-entry">
+                <p>Los tres meses no son cualquier cosa. Son 13 semanas de conocer tus gustos, tus sueños, tus secretos.
+                    Son 3 meses donde te he elegido cada dia, de aprender a amarte más profundamente. ¡Y por eso <strong>te doy las gracias</strong> por permitirme estar junto a ti y hacerme parte de tu vida! 💫</p>
+            </div>
+            <div style="text-align: center; margin: 1.5rem 0;">
+                <button class="star-btn" id="starBtn">🎂 3 MESES · Amandote cada dia ✨</button>
+            </div>
+            <div class="diary-entry">
+                <p>Hoy te regalo estas palabras escritas con el alma, pero también una promesa: voy a seguir llenando
+                    tus días de detalles, de aventuras y de ese amor que crece sin medida. Tres meses, tres tesoros, y
+                    una vida entera para seguir celebrando cada aniversario a tu lado.</p>
+                <p><strong>¡Te quiero más de lo que las estrellas pueden contar! 🌌</strong></p>
+            </div>
+        </div>
+
+        <div class="diary-footer">
+            💫 Tres meses, mil emociones, infinito amor · Esto es solo el primer capítulo de nuestra preciosa historia
+            💫
+        </div>
+    </div>
+
+    <script>
+        // ========== LISTA ADAPTADA A 3 MESES: cosas que amo y celebramos juntos ==========
+        const reasonsThreeMonths = [
+            "✨ Porque en 3 meses me enseñaste lo que es amar de verdad",
+            "🌸 Tu sonrisa ha sido mi luz cada uno de estos días",
+            "🎶 La forma en que haces que hasta los días grises sean coloridos",
+            "💖 Cada abrazo tuyo que me hace sentir en casa",
+            "🌟 La manera en que me cuentas tus sueños y me haces parte de ellos",
+            "🍰 Esas locuras juntos que solo nosotros entendemos",
+            "📖 Nuestras conversaciones hasta tarde incluso cuando el sueño nos gana",
+            "🤗 Tu paciencia y tu ternura, incluso en mis días difíciles",
+            "💕 Cómo celebramos los pequeños triunfos, como hoy: 3 meses",
+            "🌙 El hecho de que, después de 3 meses, me sigas emocionando como el primer día",
+            "☀️ Eres mi persona favorita en todo el planeta",
+            "🎉 Porque hemos creado una historia única y solo estamos empezando"
+        ];
+
+        const lovedListContainer = document.getElementById('lovedList');
+        reasonsThreeMonths.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'list-item';
+            div.innerHTML = `💗 ${item}`;
+            lovedListContainer.appendChild(div);
+        });
+
+        // ========== CONTADOR DE DÍAS: ajustado exacto a 3 meses desde el 7 de febrero de 2026 ==========
+        const startDate = new Date(2026, 1, 7, 0, 0, 0); // 7 febrero 2026
+        function updateDaysCounter() {
+            const now = new Date();
+            const diffTime = now - startDate;
+            let days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            if (days < 0) days = 0;
+            document.getElementById('daysTogether').innerText = days;
+        }
+        updateDaysCounter();
+        setInterval(updateDaysCounter, 86400000);
+
+        // ========== SOBRE CON CARTA DE 3 MESES ==========
+        const envelope = document.getElementById('envelopeBtn');
+        const letter = document.getElementById('letterContent');
+        envelope.addEventListener('click', () => {
+            letter.classList.toggle('show');
+            if (letter.classList.contains('show')) {
+                createStarRain(18); // un toque especial al abrir la carta
+            }
+        });
+
+        // ========== BOTÓN DE CELEBRACIÓN (lluvia de estrellas, flores y corazones) ==========
+        const starBtn = document.getElementById('starBtn');
+        starBtn.addEventListener('click', () => {
+            createStarRain(55);  // más explosivo por los 3 MESES
+            const pages = document.querySelectorAll('.journal-page');
+            pages.forEach(page => {
+                page.style.transition = 'background 0.3s';
+                page.style.background = '#fffef2';
+                setTimeout(() => {
+                    page.style.background = '';
+                }, 550);
+            });
+            // Mensaje especial por los 3 meses
+            alert("🎉🎈 ¡FELICES 3 MESES, MI AMOR! 🎈🎉\n\nQue cada estrella, cada flor y cada latido celebren lo hermoso de estos 3 meses juntos. ¡Te amo más que ayer y menos que mañana! 💖");
+        });
+
+        function createStarRain(count) {
+            const icons = ['⭐', '🌟', '✨', '💫', '🌸', '🌼', '🌻', '💖', '❤️', '🎉', '🎈', '🥰', '💞'];
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.style.position = 'fixed';
+                    star.style.pointerEvents = 'none';
+                    star.style.zIndex = '999';
+                    star.style.fontSize = (Math.random() * 1.8 + 1) + 'rem';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = '-30px';
+                    star.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                    star.style.animation = 'fallStar 4s ease-in forwards';
+                    star.style.opacity = '0.85';
+                    document.body.appendChild(star);
+
+                    const style = document.createElement('style');
+                    style.textContent = `
+                    @keyframes fallStar {
+                        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+                        15% { opacity: 1; }
+                        85% { opacity: 0.8; }
+                        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+                    }
+                `;
+                    if (!document.querySelector('#dynamic-star-style')) {
+                        style.id = 'dynamic-star-style';
+                        document.head.appendChild(style);
+                    }
+                    setTimeout(() => star.remove(), 4100);
+                }, i * 70);
+            }
+        }
+
+        // ========== POLAROIDS: mensajes con temática de 3 MESES ==========
+        const polaroids = document.querySelectorAll('.polaroid');
+        const threeMonthsMessages = [
+            "📸 ¡Ese momento fue el comienzo de estos increíbles 3 meses!",
+            "🌹 3 meses y esta foto me roba el corazón igual que tú.",
+            "💕 No puedo creer que ya tenemos 3 meses y todo empezó así.",
+            "🎂 Tres meses después, esa foto me hace sonreír como el primer día."
+        ];
+        polaroids.forEach(polaroid => {
+            polaroid.addEventListener('click', () => {
+                alert(threeMonthsMessages[Math.floor(Math.random() * threeMonthsMessages.length)]);
+                createStarRain(8);
+            });
+        });
+
+        // pequeños detalles al cargar: un aviso cálido y una diminuta lluvia de bienvenida
+        window.addEventListener('load', () => {
+            setTimeout(() => createStarRain(20), 400);
+            // Mostrar un pequeño mensaje de bienvenida con la duración exacta
+            console.log("📖 Celebrando 3 meses juntos · 90 días llenos de amor ❤️");
+        });
+    </script>
+</body>
+
+</html>
